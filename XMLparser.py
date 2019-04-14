@@ -8,7 +8,7 @@ except ImportError:
 import os
 
 dataMap = {}
-dir = "./stage1_dataset/test"
+directory = "./stage1_dataset/test"
 
 class Action():
     def __init__(self, api_name, call_name, call_pid, call_time, ret_value, apiArg_list, exInfo_list):
@@ -20,33 +20,48 @@ class Action():
         self.apiArg_list = apiArg_list
         self.exInfo_list = exInfo_list
 
+def _findActionList(filePath):
+    actionlist = []
+    tree = ET.ElementTree(file = filePath)
+    for elem in tree.iterfind('file_list/file/start_boot/action_list/action'):
+        apiArg_list = []
+        exInfo_list = []
+        for argInfo in elem.iter():
+            if argInfo.tag == "apiArg_list":
+                for arg in argInfo:
+                    apiArg_list.append(arg.attrib["value"])
+            if argInfo.tag == "exInfo_list":
+                for arg in argInfo:
+                    exInfo_list.append(arg.attrib["value"])
+        action = Action(elem.attrib["api_name"],
+                        elem.attrib["call_name"],
+                        elem.attrib["call_pid"],
+                        elem.attrib["call_time"],
+                        elem.attrib["ret_value"],
+                        apiArg_list,
+                        exInfo_list)
+        actionlist.append(action)
+    return actionlist
 
-if ( __name__ == "__main__"):
-    for filename in os.listdir(dir):
-        if filename.endswith(".xml"):
-            actionlist = []
-            tree = ET.ElementTree(file = os.path.join(dir, filename))
-            for elem in tree.iterfind('file_list/file/start_boot/action_list/action'):
-                apiArg_list = []
-                exInfo_list = []
-                for argInfo in elem.iter():
-                    if argInfo.tag == "apiArg_list":
-                        for arg in argInfo:
-                            apiArg_list.append(arg.attrib["value"])
-                    if argInfo.tag == "exInfo_list":
-                        for arg in argInfo:
-                            exInfo_list.append(arg.attrib["value"])
-                action = Action(elem.attrib["api_name"],
-                                elem.attrib["call_name"],
-                                elem.attrib["call_pid"],
-                                elem.attrib["call_time"],
-                                elem.attrib["ret_value"],
-                                apiArg_list,
-                                exInfo_list)
-                actionlist.append(action)
-            key = filename.replace(".xml","")
+def parseFile(fileName, dir=directory):
+    filePath = os.path.join(dir, fileName)
+    if not os.path.exists(filePath):
+        return None
+    return _findActionList(filePath)
+
+
+def parseDir(dir=directory):
+    for fileName in os.listdir(dir):
+        if fileName.endswith(".xml"):
+            actionlist = _findActionList(os.path.join(dir, fileName))
+            key = fileName.replace(".xml","")
             dataMap[key] = actionlist
+    return dataMap
 
-    # could be slow
-    #for filename, actionlist in dataMap:
-    #    print("%s: %d" % (filename, len(actionlist)))
+# usage example
+# if ( __name__ == "__main__"):
+#     fileName = "ff8a1943d5b51c7182a521212273eb2ff72487637f1d314fb21042750ffe79cd.xml"
+#     actionlist = parseFile(fileName)
+#     print("%s: %d" % (fileName, len(actionlist)))
+
+#     dataMap = parseDir()
