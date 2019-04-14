@@ -1,3 +1,6 @@
+stage1_dataset/
+stage2_dataset/
+tmp/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
