@@ -23,7 +23,7 @@ if ( __name__ == "__main__"):
     for filename in os.listdir(dir):
         if filename.endswith(".xml"):
             actionlist = []
-            tree = ET.ElementTree(file=filename)
+            tree = ET.ElementTree(file= dir+filename)
             for elem in tree.iterfind('file_list/file/start_boot/action_list/action'):
                 action = Action(elem.attrib["api_name"],
                     elem.attrib["call_name"],
@@ -36,5 +36,5 @@ if ( __name__ == "__main__"):
             print("%s: %d" % (filename, len(actionlist)))
 
     # could be slow
-    for filename, actionlist in dataMap:
-        print("%s: %d" % (filename, len(actionlist)))
+    #for filename, actionlist in dataMap:
+    #    print("%s: %d" % (filename, len(actionlist)))
