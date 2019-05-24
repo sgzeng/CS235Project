@@ -54,9 +54,7 @@ def parseDir(dir=directory):
     for fileName in os.listdir(dir):
         if fileName.endswith(".xml"):
             actionlist = _findActionList(os.path.join(dir, fileName))
-            key = fileName.replace(".xml","")
-            dataMap[key] = actionlist
-    return dataMap
+            yield actionlist
 
 # usage example
 # if ( __name__ == "__main__"):
@@ -64,4 +62,5 @@ def parseDir(dir=directory):
 #     actionlist = parseFile(fileName)
 #     print("%s: %d" % (fileName, len(actionlist)))
 
-#     dataMap = parseDir()
+#     for actionlist in parseDir():
+#         # do something
