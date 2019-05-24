@@ -7,7 +7,6 @@ except ImportError:
     import xml.etree.ElementTree as ET
 import os
 
-dataMap = {}
 directory = "./stage1_dataset/test"
 
 class Action():
