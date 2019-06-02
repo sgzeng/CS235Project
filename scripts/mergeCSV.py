@@ -14,7 +14,7 @@ def mergeCSV(in1, in2, outputPath):
         columns.append('pc'+str(i))
     df2.columns = columns
     output = df1.join(df2, how='right')
-    print(outputPath)
+    print('result has been written to ' + outputPath)
     output.to_csv(outputPath)
 
 '''
@@ -22,7 +22,7 @@ This script merges two csv files recursively into one into output folder.
 For example, if we have two folders in root dir:
 ./input1/
 ./input2/
-each input* folder contains csv files, This script merges two csv files 
+each input* folder contains csv files, This script merges two csv files
 having same filename recursively into output folder. To run:
 # pip install wheel
 # pip install pandas
