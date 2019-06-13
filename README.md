@@ -1,7 +1,7 @@
 # CS235Project
 UCR CS235 Data Mining Group Project
 
-# English Description
+## English Description
 
 This is the final project of UCR CS235. Team members: Haochen Zeng, Mingchen Li, Yujia Zhai.
 
@@ -11,7 +11,20 @@ This is the final project of UCR CS235. Team members: Haochen Zeng, Mingchen Li,
 
 - LogReg, NN, testing accuracy up to 94%.
 
-#大数据比赛-恶意代码识别分赛第一题说明文档
+# Ref:
+
+## Related Methodology
+https://xz.aliyun.com/t/3704
+
+## Priori Knowledges
+A list of Sensitive Windows API: p453 <<Practical Malware Analysis>>
+
+https://esebanana.github.io/2018/04/28/re_15_evil_3/
+
+https://github.com/rshipp/awesome-malware-analysis/blob/master/%E6%81%B6%E6%84%8F%E8%BD%AF%E4%BB%B6%E5%88%86%E6%9E%90%E5%A4%A7%E5%90%88%E9%9B%86.md
+
+# Chinese Description
+## 大数据比赛-恶意代码识别分赛第一题说明文档
 
 1. 第一题题目设计说明
 面对大量的 PC 恶意病毒的动态行为进行识别，进行分类判别，即判断一个 exe 文件 经过沙箱运行后输出的 x􏰀􏰁 文件来判断该文件是否为恶意程序。
@@ -36,16 +49,4 @@ N: 测试集样本数量
 Safe_type 判断正确，可得 1 分;
 Safe_type 判断不正确时。若属于误报，即白样本判断为恶意样本，扣 1 分。
 若属于漏报，即恶意样本判断为白样本，不得分也不扣分。 备注:更看重对误报的惩罚，参赛者提交的是非 0 即 1 的硬分类结果。
--(2) 提交说明:第一题比赛每日可提交一次，取截至日期前得分最高成绩; 决赛成 绩按截至日期前最优成绩排名确定(进入前三名的队伍最终的名次确定会参考 一定比例的算法设计思路);
-
-# Ref:
-
-## Related Methodology
-https://xz.aliyun.com/t/3704
-
-## Priori Knowledges
-A list of Sensitive Windows API: p453 <<Practical Malware Analysis>>
-
-https://esebanana.github.io/2018/04/28/re_15_evil_3/
-
-https://github.com/rshipp/awesome-malware-analysis/blob/master/%E6%81%B6%E6%84%8F%E8%BD%AF%E4%BB%B6%E5%88%86%E6%9E%90%E5%A4%A7%E5%90%88%E9%9B%86.md
+-(2) 提交说明:第一题比赛每日可提交一次，取截至日期前得分最高成绩; 决赛成 绩按截至日期前最优成绩排名确定(进入前三名的队伍最终的名次确定会参考 一定比例的算法设计思路).
