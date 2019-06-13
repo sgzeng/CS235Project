@@ -1,6 +1,16 @@
 # CS235Project
 UCR CS235 Data Mining Group Project
 
+# English Description
+
+This is the final project of UCR CS235. Team members: Haochen Zeng, Mingchen Li, Yujia Zhai.
+
+- Raw data: 16000 white, 8000 black (training), 4000 white, 2000 black (testing).
+
+- Fused feature extraction scheme.
+
+- LogReg, NN, testing accuracy up to 94%.
+
 #大数据比赛-恶意代码识别分赛第一题说明文档
 
 1. 第一题题目设计说明
