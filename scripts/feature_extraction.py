@@ -29,10 +29,9 @@ def makeCSV(rows, attributes, outputPath):
     columns = []
     for colNum in attributes:
         columns.append(colNum)
-    df2.columns = columns
-    output = df1.join(df2, how='right')
+    df.columns = columns
     print('result has been written to ' + outputPath)
-    output.to_csv(outputPath)
+    df.to_csv(outputPath)
 
 
 if __name__ == '__main__':
